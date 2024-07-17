@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Training Entries</title>
+</head>
+<body>
+<h1>Training Entries</h1>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Exercise</th>
+        <th>Duration</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="entry : ${entries}">
+        <td th:text="${entry.date}">Date</td>
+        <td th:text="${entry.exercise}">Exercise</td>
+        <td th:text="${entry.duration}">Duration</td>
+        <td>
+            <a th:href="@{/diary/edit/{id}(id=${entry.id})}">Edit</a>
+            <a th:href="@{/diary/delete/{id}(id=${entry.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/diary/add}">Add New Entry</a>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Training App</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Training App</h1>
+
+    <h2>Add Training</h2>
+    <form th:action="@{/createDiary}" method="post">
+        <div class="form-group">
+            <label for="Title">Training Name:</label>
+            <input type="text" id="Title" name="Title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+        </div>
+        <button type="submit" class="btn">Add Training</button>
+    </form>
+
+    <h2>All Trainings</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="training : ${trainings}">
+            <td th:text="${training.name}"></td>
+            <td th:text="${training.description}"></td>
+            <td>
+                <form th:action="@{/deleteTraining/{id}(id=${training.id})}" method="post" class="inline-form">
+                    <button type="submit" class="btn btn-delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
