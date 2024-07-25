@@ -23,10 +23,9 @@ public class DiaryServiceImpl implements DiaryService {
                 diaryDto.getTime(),
                 diaryDto.getTitle(),
                 diaryDto.getDurOfTraining(),
-                diaryDto.getWarmUp(),
-                diaryDto.getRuns(),
-                diaryDto.getDurOfrun(),
-                diaryDto.getDistanceOfrun()
+                diaryDto.getRuns()
+           //     diaryDto.getWarmUp(),
+
 
         );
         return diaryRepository.save(diary);
@@ -40,14 +39,16 @@ public class DiaryServiceImpl implements DiaryService {
                 diaryRecord.time(),
                 diaryRecord.Title(),
                 diaryRecord.DurOfTraining(),
-                diaryRecord.warmUp(),
-                diaryRecord.runs(),
-                diaryRecord.durOfrun(),
-                diaryRecord.distanceOfrun()
+                diaryRecord.runs()
+
+
 
         );
         return diaryRepository.save(diary);
 
 
     }
+
+
+
 }

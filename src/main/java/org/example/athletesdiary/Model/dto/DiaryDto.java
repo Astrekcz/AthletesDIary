@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.athletesdiary.Model.Runs;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -18,9 +19,8 @@ public class DiaryDto {
     private String Title;
     private Long DurOfTraining;  //duration of training in hours
     private String warmUp;
-    private String runs;
-    private Long durOfrun;        //duration of runs... 200m break 1min etc
-    private Long distanceOfrun;
+    private Runs runs;
+
 
 
 }

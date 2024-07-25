@@ -1,17 +1,12 @@
 package org.example.athletesdiary.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 
 @Entity
-@Getter
 @NoArgsConstructor
 public class Diary {
         private LocalDateTime date;
@@ -21,10 +16,11 @@ public class Diary {
         private Integer id;  //number of weeks
         private String Title;
         private Long DurOfTraining;  //duration of training in hours
-        private String warmUp;
-        private String runs;
-        private Long durOfrun;        //duration of runs... 200m break 1min etc
-        private Long distanceOfrun;
+       // private String warmUp;  TODO warmup class
+
+        @ManyToOne
+        @JoinColumn(name = "RunsId")
+        private Runs runs;
 
 
         public Diary(
@@ -32,18 +28,15 @@ public class Diary {
                 LocalDateTime time,
                 String title,
                 Long DurOfTraining,
-                String warmUp,
-                String runs,
-                Long durOfrun,
-                Long distanceOfrun
+               // String warmUp,
+                Runs runs
         ){
                 this.date = date;
                 this.time = time;
                 this.Title = title;
                 this.DurOfTraining = DurOfTraining;
-                this.warmUp = warmUp;
+                //this.warmUp = warmUp;
                 this.runs = runs;
-                this.durOfrun = durOfrun;
-                this.distanceOfrun = distanceOfrun;
+
         }
 }
