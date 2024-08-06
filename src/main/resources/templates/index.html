@@ -10,14 +10,14 @@
     <h1>Training App</h1>
 
     <h2>Add Training</h2>
-    <form th:action="@{/createDiary}" method="post">
+    <form th:action="@{/api/v1/createDiaryR}" method="post">
         <div class="form-group">
             <label for="Title">Training Name:</label>
             <input type="text" id="Title" name="Title" required>
         </div>
         <div class="form-group">
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description" required>
+            <label for="DurOfTrainin">Duration of training:</label>
+            <input type="number" id="DurOfTrainin" name="DurOfTrainin" required>
         </div>
         <button type="submit" class="btn">Add Training</button>
     </form>
@@ -32,9 +32,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="training : ${trainings}">
-            <td th:text="${training.name}"></td>
-            <td th:text="${training.description}"></td>
+        <tr th:each="diary : ${diaries}">
+            <td th:text="${diary.title}"></td>
+            <td th:text="${diary.DurOfTrainin}"></td>
             <td>
                 <form th:action="@{/deleteTraining/{id}(id=${training.id})}" method="post" class="inline-form">
                     <button type="submit" class="btn btn-delete">Delete</button>

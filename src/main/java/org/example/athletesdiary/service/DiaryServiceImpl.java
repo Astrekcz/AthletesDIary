@@ -9,6 +9,8 @@ import org.example.athletesdiary.Repository.DiaryRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("DiaryServiceImpl")
 @RequiredArgsConstructor
 @Component
@@ -47,6 +49,10 @@ public class DiaryServiceImpl implements DiaryService {
         return diaryRepository.save(diary);
 
 
+    }
+    @Override
+    public List<Diary> getDiaryList(){
+        return diaryRepository.findAll();
     }
 
 
